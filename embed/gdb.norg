@@ -1,0 +1,26 @@
+* GDB
+
+** Connecting
+   run [gdb <path-to-binary>] to start program
+   use [target remote :<port>] to connect to device
+   use [quit] to quit
+
+** Breakpoints
+   use [break <function-name>] to set breakpoint at start of function
+   use [break <line-number>] to set breakpoint at a given line number
+   use [delete <breakpoint-num>] to remove a breakpoint
+   use [info break] to list breakpoints
+
+** Variables
+   use [print <variable-name>] to see the /value/ of a variable
+   use [print \&<variable-name>] to see the /address/ of a variable
+   use [info locals] to see the value of all variables in scope
+
+** General
+   use [layout src] to open the tui
+   use [layout asm] to open asm tui
+   use [tui disable] to close the tui
+   type _Ctrl+c_ to get unstuck
+   use [c] or [continue] to continue execution
+   use [n] or [next] or [stepi] to step 1 operation
+   use [monitor reset] to reset microcontroller to the program entry point

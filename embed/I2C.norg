@@ -1,0 +1,36 @@
+* Inter-Integrated Circuit (I2C)
+  - synchronous serial communication protocol
+  - uses two lines to exhange data
+      - a data line (SDA)
+      - a clock line (SCL)
+  - protocol uses a /controller target/ model
+
+** Controller Target Model
+   - the *controller*  is the device that /starts/ and drives communication with a target device
+   - several devices, both controller and targets can be connected to the same bus at the same time
+   - the *controller* communicates with a specific target device by first broadcasting its /address/ to the bus
+   - this /address/ can be 7-10bits long
+   - while communication is established no other device may use the bus
+   - /clock line/ determines how fast data can be exchanged
+      - 100kHz (standard mode)
+      - 400kHz (fast mode)
+
+** General Protocol
+   *** Controller -> Target 
+       1. *Controller*: Broadcast START
+       2. *C*: Broadcast target address (7bits) + the R/W (8th) bit set to WRITE 
+       3. *Target*: Responds ACK (Acknowledgement)
+       4. *C*: Send one byte
+       5. *T*: Responds ACK
+       6. Repeat steps 4 and 5 zero or more times
+       7. *C*: Broadcast STOP OR (broadcast RESTART and go back to step 2)
+   *** Target -> Controller
+       1. *C*: Broadcast START
+       2. *C*: Broadcast target address (7bits) + the R/W (8th) bit set to READ
+       3. *T*: Responds with ACK
+       4. *T*: Sends byte
+       5. *C*: Responds with ACK
+       6. Repeat steps 4 and 5 zero or more times
+       7. *C*: Broadcast STOP OR (broadcast RESTART and go back to step 2)
+
+
