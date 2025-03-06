@@ -102,7 +102,7 @@ WHERE message LIKE '%10$%%' ESCAPE '$';
 
 ## Join Tables
 ### Joins
-![INNER JOIN](~/Pictures/Notes/PostgreSQL-Join-Inner-Join.avif)
+![INNER JOIN](../../assets/PostgreSQL-Join-Inner-Join.avif)
 - when equal the `INNER JOIN` creates a new row that contains columns from both tables and adds this new row to the result set
 
 ![LEFT JOIN](https://neon.tech/_next/image?url=%2Fpostgresqltutorial%2FPostgreSQL-Join-Left-Join.png&w=256&q=75&dpl=dpl_E7KLtH8jYxaZHJ8xeui4VnF9NBPK)

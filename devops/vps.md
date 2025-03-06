@@ -91,6 +91,7 @@ services:
             # So that Traefik can listen to Docker events
             - /var/run/docker.sock:/var/run/docker.sock
 ```
+### (Optional) Custom Network Setup
 - from the VPS use `docker network create <name>` to create a new network for the reverse proxy to run on
 - use `docker network ls` to confirm the docker network has been created
 - add the name of the custom network to the **networks** section of the compose.yml file
@@ -109,22 +110,15 @@ networks:
 ### Container Routing
 - add the following to the compose.yml of the application to be routed
 ```yml
-    networks:
-        - proxy
     labels:
         - traefik.enable=true
         - traefik.http.routers.myrouter.rule=Host(`<domain>`)
         - traefik.http.routers.myrouter.entrypoints=web
 ```
-```yml
-networks:
-    proxy:
-        external: true
-```
 
 ## HTTPS Setup
 - in cloudflare create an API token using the **Edit zone DNS** template
-![User API Tokens](~/Pictures/Screenshots/250302_21h15m59s_screenshot.png)
+![User API Tokens](../assets/250302_21h15m59s_screenshot.png)
 - set the created token as an environment variable within the reverse-proxy project
 ```env
 CF_DNS_API_TOKEN = '<token>'
